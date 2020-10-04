@@ -1,0 +1,50 @@
+matiere;revetement;nb_dent;diametre;vitesse_coupe;avance_dent
+Bois Tendre;rien;2;1;500;0.025
+Bois Tendre;rien;2;2;500;0.03
+Bois Tendre;rien;2;3;500;0.035
+Bois Tendre;rien;2;4;500;0.06
+Bois Tendre;rien;2;5;500;0.07
+Bois Tendre;rien;2;6;500;0.09
+Bois Tendre;rien;2;8;500;0.1
+Bois dur;rien;2;1;450;0.02
+Bois dur;rien;2;2;450;0.025
+Bois dur;rien;2;3;450;0.03
+Bois dur;rien;2;4;450;0.055
+Bois dur;rien;2;5;450;0.065
+Bois dur;rien;2;6;450;0.085
+Bois dur;rien;2;8;450;0.095
+MDF;rien;2;1;450;0.05
+MDF;rien;2;2;450;0.07
+MDF;rien;2;3;450;0.1
+MDF;rien;2;4;450;0.15
+MDF;rien;2;5;450;0.2
+MDF;rien;2;6;450;0.3
+MDF;rien;2;8;450;0.4
+PVC;rien;2;1;300;0.04
+PVC;rien;2;2;300;0.06
+PVC;rien;2;3;300;0.15
+PVC;rien;2;4;300;0.2
+PVC;rien;2;5;300;0.25
+PVC;rien;2;6;300;0.35
+PVC;rien;2;8;300;0.4
+Aluminium;rien;2;1;150;0.01
+Aluminium;rien;2;2;150;0.01
+Aluminium;rien;2;3;150;0.01
+Aluminium;rien;2;4;150;0.015
+Aluminium;rien;2;5;150;0.015
+Aluminium;rien;2;6;150;0.02
+Aluminium;rien;2;8;150;0.03
+Cuivre;rien;2;1;250;0.01
+Cuivre;rien;2;2;250;0.01
+Cuivre;rien;2;3;250;0.02
+Cuivre;rien;2;4;250;0.025
+Cuivre;rien;2;5;250;0.03
+Cuivre;rien;2;6;250;0.04
+Cuivre;rien;2;8;250;0.05
+Acier doux;rien;2;1;80;0.01
+Acier doux;rien;2;2;80;0.01
+Acier doux;rien;2;3;80;0.01
+Acier doux;rien;2;4;80;0.02
+Acier doux;rien;2;5;80;0.03
+Acier doux;rien;2;6;80;0.035
+Acier doux;rien;2;8;80;0.045

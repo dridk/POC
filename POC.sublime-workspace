@@ -1,0 +1,333 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"l_",
+				"l_nb_dent\tstatement"
+			],
+			[
+				"vi",
+				"vitesse_rotation"
+			],
+			[
+				"vit",
+				"vitesse_avance_outil"
+			],
+			[
+				"vitesse",
+				"vitesse_rotation"
+			],
+			[
+				"if",
+				"ifmain\tif __name__ == '__main__'"
+			],
+			[
+				"current",
+				"currentText\tfunction"
+			],
+			[
+				"add",
+				"addItems\tfunction"
+			],
+			[
+				"rea",
+				"read_csv\tfunction"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "from PySide2.QtWidgets import *\nfrom PySide2.QtCore import *\nimport pandas as pd\nfrom math import pi\nimport sys\n\n\nfichier_coupe = pd.read_csv(\"parametre_coupe.csv\", sep=\";\") # \n\napp = QApplication(sys.argv)\n\nw = QWidget()  \t\t\t\t\t# création d'une fenêtre\n\n\nlayout = QVBoxLayout()  \t\t# création conteneur de widgets\n\nresultat = QLabel()\t\t\t\t# création zone de texte\nl_matiere = QLabel()\nl_diametre = QLabel()\nl_revetement = QLabel()\nl_nb_dent = QLabel()\n\nbox_matiere = QComboBox()  \t\t# création menu déroulant\nbox_revetement = QComboBox()\nbox_diametre = QComboBox()\nbox_dent = QComboBox()\n\nbox_matiere.addItems(fichier_coupe[\"matiere\"].unique())  # Ajoute à la liste déroulante les occurance uniques de la colonne matière\nbox_revetement.addItems(fichier_coupe[\"revetement\"].unique())  # Ajoute à la liste déroulante les occurance uniques de la colonne revetement\nbox_diametre.addItems(fichier_coupe[\"diametre\"].astype(str).unique())\nbox_dent.addItems(fichier_coupe[\"nb_dent\"].astype(str).unique())\n\nbtn = QPushButton(\"Calculer\")  \t\t\t# crétaion bouton\n\nlayout.addWidget(l_matiere)\t\t\t# Ajout du menu déroulant à la fenêtre\nlayout.addWidget(box_matiere)\t\t\t# Ajout du menu déroulant à la fenêtre\nlayout.addWidget(l_revetement)\nlayout.addWidget(box_revetement)\nlayout.addWidget(l_diametre)\nlayout.addWidget(box_diametre)\nlayout.addWidget(l_nb_dent)\nlayout.addWidget(box_dent)\nlayout.addStretch()  \t\t\t\t\t# Ajout séparateur\nlayout.addWidget(resultat)  \t\t\t\t# Ajout zone texte à la fenêtre\nlayout.addStretch()  \nlayout.addWidget(btn)\n\nl_matiere.setText(f\"Matière\")  \nl_revetement.setText(f\"Revêtement\")  \nl_diametre.setText(f\"Diamètre\")  \nl_nb_dent.setText(f\"Nombre de dents\")  \n\nw.setLayout(layout)  \t\t\t\t\t# Ajouter layout à la fentre\n\n\n\ndef calcul():\t\t\t\t\t\t\t# Création d'une fonction\n\n\tdiam = int(box_diametre.currentText()) # Récupération de la valeur du menu déroulant\n\tmat = box_matiere.currentText()\n\trev = box_revetement.currentText()\n\tnb_d = box_dent.currentText()\n\t\n\tfiltre = fichier_coupe.query(\"matiere == @mat & diametre == @diam & revetement == @rev & nb_dent == @nb_d\") # isolé ligne en fonction de paramètre\n\tvc = filtre[\"vitesse_coupe\"].iloc[0]\t# Récupération de la première donnée de la colonne spécifiée\n\tfz = filtre[\"avance_dent\"].iloc[0]\n\tn_d = filtre[\"nb_dent\"].iloc[0]\n\n\tvitesse_rotation = round((1000 * vc) / (pi * diam))\n\tif vitesse_rotation > 25000:\n\t\tvitesse_rotation = 25000 \n\tvitesse_avance_outil = round(vitesse_rotation * fz * n_d) # round == arrondi\n\tresultat.setText(f\"La vitesse de rotation sera de {vitesse_rotation} tr/min \\nLa vitesse d'avance de l'outil sera de {vitesse_avance_outil} mm/min\")\n\t# afficher le texte dans la zone de texte resultat créée précedemment\n\t\n\treturn vitesse_rotation, vitesse_avance_outil\n\nbtn.clicked.connect(calcul)\n\nw.show()  # affichage fenetre\n\napp.exec_()",
+			"file": "test.py",
+			"file_size": 2948,
+			"file_write_time": 132462863795878823,
+			"settings":
+			{
+				"buffer_size": 2807,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "Packages/Python/Python.sublime-build",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"git",
+				"Git: Init"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"disa",
+				"Anaconda: Disable linting on this file"
+			],
+			[
+				"Share",
+				"Floobits - Share Directory (Public)"
+			],
+			[
+				"share",
+				"Floobits - Share Directory (Private)"
+			],
+			[
+				"lower",
+				"Convert Case: Lower Case"
+			],
+			[
+				"",
+				"Anaconda: Disable linting on this file"
+			],
+			[
+				"installa",
+				"Package Control: Install Package"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/Bunker/Dropbox/Projet/Programmation/Python/POC"
+	],
+	"file_history":
+	[
+		"/C/Users/Bunker/AppData/Roaming/Sublime Text 3/Packages/User/Git.sublime-settings",
+		"/C/Users/Bunker/Dropbox/Projet/Programmation/Python/POC/testsacha.py",
+		"/C/Users/Bunker/Dropbox/Projet/Programmation/Python/POC/test.py",
+		"/C/Users/Bunker/Dropbox/Projet/Programmation/Python/POC/POC.sublime-project",
+		"/C/Users/Bunker/Dropbox/Projet/Programmation/Python/POC/parametre_coupe.csv",
+		"/C/Users/Bunker/floobits/welcome.md",
+		"/C/Users/Bunker/AppData/Roaming/Sublime Text 3/Packages/Anaconda/Anaconda.sublime-settings",
+		"/C/Users/Bunker/Dropbox/Projet/Programmation/Python/POC/test2.py",
+		"/C/Users/Bunker/AppData/Roaming/Sublime Text 3/Packages/Jedi - Python autocompletion/sublime_jedi.sublime-settings",
+		"/C/Users/Bunker/AppData/Roaming/Sublime Text 3/Packages/User/python38.sublime-build",
+		"/C/Users/Bunker/Dropbox/Projet/Programmation/Python/POC/Test.py"
+	],
+	"find":
+	{
+		"height": 27.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"Matière",
+			"box_revetement",
+			"layout",
+			"label",
+			"Label",
+			"label",
+			"vitesse_rotation",
+			")\n",
+			"è",
+			",",
+			"Bois Tendre",
+			";$",
+			"parametre_coupe",
+			"read_csv",
+			"pd",
+			"\\",
+			"Python38",
+			"\\",
+			"/home/damnwidget/.virtualenvs/anaconda/bin/python",
+			"\\"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "test.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2807,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								253,
+								253
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 54.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 39.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 329.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/Python/Python.sublime-build",
+	"project": "POC.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 264.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
