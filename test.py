@@ -10,15 +10,15 @@ fichier_coupe = pd.read_csv("parametre_coupe.csv", sep=";")  #
 app = QApplication(sys.argv)
 
 w = QWidget()  # création d'une fenêtre
-w.isMaximized()
+
 
 layout = QVBoxLayout()  # création conteneur de widgets
 
+#   Un layout specialisé pour les formulaire
+#   form_layout.addRow("nom du champs", widget)
+form_layout = QFormLayout()
+
 resultat = QLabel()  # création zone de texte
-l_matiere = QLabel()
-l_diametre = QLabel()
-l_revetement = QLabel()
-l_nb_dent = QLabel()
 
 box_matiere = QComboBox()  # création menu déroulant
 box_revetement = QComboBox()
@@ -36,23 +36,19 @@ box_dent.addItems(fichier_coupe["nb_dent"].astype(str).unique())
 
 btn = QPushButton("Calculer")  # crétaion bouton
 
-layout.addWidget(l_matiere)  # Ajout du menu déroulant à la fenêtre
-layout.addWidget(box_matiere)  # Ajout du menu déroulant à la fenêtre
-layout.addWidget(l_revetement)
-layout.addWidget(box_revetement)
-layout.addWidget(l_diametre)
-layout.addWidget(box_diametre)
-layout.addWidget(l_nb_dent)
-layout.addWidget(box_dent)
+form_layout.addRow("Matière", box_matiere)  # Ajout du menu déroulant à la fenêtre
+form_layout.addRow("Revêtement", box_revetement)
+form_layout.addRow("Diamètre", box_diametre)
+form_layout.addRow("Nombre de dents", box_dent)
+
+#  On met le form_layout dans le layout principale
+layout.addLayout(form_layout)
+
 layout.addStretch()  # Ajout séparateur
 layout.addWidget(resultat)  # Ajout zone texte à la fenêtre
 layout.addStretch()
 layout.addWidget(btn)
 
-l_matiere.setText(f"Matière")
-l_revetement.setText(f"Revêtement")
-l_diametre.setText(f"Diamètre")
-l_nb_dent.setText(f"Nombre de dents")
 
 w.setLayout(layout)  # Ajouter layout à la fentre
 
