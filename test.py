@@ -26,12 +26,8 @@ box_revetement = QComboBox()
 box_diametre = QComboBox()
 box_dent = QComboBox()
 
-box_matiere.addItems(
-    fichier_coupe["matiere"].unique()
-)  # Ajoute à la liste déroulante les occurance uniques de la colonne matière
-box_revetement.addItems(
-    fichier_coupe["revetement"].unique()
-)  # Ajoute à la liste déroulante les occurance uniques de la colonne revetement
+box_matiere.addItems(fichier_coupe["matiere"].unique())  # Ajoute à la liste déroulante les occurance uniques de la colonne matière
+box_revetement.addItems(fichier_coupe["revetement"].unique())  # Ajoute à la liste déroulante les occurance uniques de la colonne revetement
 box_diametre.addItems(fichier_coupe["diametre"].astype(str).unique())
 box_dent.addItems(fichier_coupe["nb_dent"].astype(str).unique())
 
