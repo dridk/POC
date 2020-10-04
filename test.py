@@ -10,7 +10,7 @@ fichier_coupe = pd.read_csv("parametre_coupe.csv", sep=";") #
 app = QApplication(sys.argv)
 
 w = QWidget()  					# création d'une fenêtre
-w.isMaximized() True
+
 
 layout = QVBoxLayout()  		# création conteneur de widgets
 
