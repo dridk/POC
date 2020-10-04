@@ -12,6 +12,7 @@ app = QApplication(sys.argv)
 w = QWidget()  # création d'une fenêtre
 
 
+
 layout = QVBoxLayout()  # création conteneur de widgets
 
 #   Un layout specialisé pour les formulaire
